@@ -1,0 +1,18 @@
+FAVICON.ICO PLACEHOLDER
+
+This file should be replaced with an actual favicon.ico file.
+
+Recommended specifications:
+- Size: 32x32 pixels (also include 16x16 and 48x48 for best compatibility)
+- Format: ICO
+- Design: The ⊗ glyph in the brand's primary color (#1ae0ff) on a dark background (#0b0b12)
+- Should be simple and recognizable at small sizes
+
+You can generate this using:
+- Online favicon generators
+- Image editing software like Photoshop, GIMP, or Figma
+- Command-line tools like ImageMagick
+
+Example ImageMagick command:
+convert -size 32x32 -background "#0b0b12" -fill "#1ae0ff" -gravity center -pointsize 24 label:"⊗" favicon.ico
+

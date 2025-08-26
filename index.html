@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BARBELITH ✦ K-VOID — Tuning Console</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="BARBELITH ✦ K-VOID - Transmissions // Neo-Semiotic Soul. Discover the latest tracks and connect with the artist.">
+    <meta name="keywords" content="BARBELITH, K-VOID, music, electronic, neo-semiotic, soul, transmissions">
+    <meta name="author" content="BARBELITH ✦ K-VOID">
+
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content="BARBELITH ✦ K-VOID — Tuning Console">
+    <meta property="og:description" content="Transmissions // Neo-Semiotic Soul">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="BARBELITH ✦ K-VOID">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BARBELITH ✦ K-VOID — Tuning Console">
+    <meta name="twitter:description" content="Transmissions // Neo-Semiotic Soul">
+    <meta name="twitter:image" content="">
+
+    <!-- Canonical -->
+    <link id="canonical-link" rel="canonical" href="https://tune.kvoid.net/">
+
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" type="image/x-icon" href="favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1ae0ff',
+                        accent: '#ff3fd1',
+                        bg: '#0b0b12'
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Inline CSS for custom effects -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+        .scanline {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scanline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(26, 224, 255, 0.1), transparent);
+            animation: scan 3s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .glow {
+            text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+        }
+
+        .neon-border {
+            box-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+        }
+
+        .focus-visible {
+            outline: 2px solid #1ae0ff;
+            outline-offset: 2px;
+        }
+
+        .radio-live {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-bg text-white font-mono min-h-screen">
+    <!-- Main Container -->
+    <div id="app" class="max-w-md mx-auto px-4 py-8 space-y-8">
+        <!-- Loading State -->
+        <div id="loading" class="text-center py-12">
+            <div class="text-primary text-xl">⊗</div>
+            <p class="text-primary mt-4 animate-pulse">Tuning...</p>
+        </div>
+
+        <!-- Main Content (Hidden initially) -->
+        <div id="main-content" class="hidden space-y-8">
+            <!-- Header -->
+            <header class="text-center space-y-4" role="banner">
+                <div id="brand-glyph" class="text-6xl text-primary glow" aria-label="BARBELITH K-VOID glyph">⊗</div>
+                <h1 id="brand-title" class="text-2xl font-bold text-primary glow">BARBELITH ✦ K-VOID</h1>
+                <p id="brand-subtitle" class="text-accent">Transmissions // Neo-Semiotic Soul</p>
+            </header>
+
+            <!-- Featured Track -->
+            <section class="space-y-4" aria-labelledby="featured-label">
+                <h2 id="featured-label" class="text-lg font-bold text-primary text-center">Featured Signal</h2>
+                <div class="bg-gray-900 rounded-lg p-6 neon-border border border-primary/30 scanline">
+                    <h3 id="featured-title" class="text-xl font-bold text-center mb-4 text-primary">She's in Stars</h3>
+                    <div class="featured-links flex justify-center space-x-4 mb-4">
+                        <a href="#" data-utm="true" class="js-outbound bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded transition-colors focus-visible" aria-label="Play on Spotify">
+                            <span class="text-sm">Spotify</span>
+                        </a>
+                        <a href="#" data-utm="true" class="js-outbound bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded transition-colors focus-visible" aria-label="Play on Apple Music">
+                            <span class="text-sm">Apple</span>
+                        </a>
+                        <a href="#" data-utm="true" class="js-outbound bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded transition-colors focus-visible" aria-label="Watch on YouTube">
+                            <span class="text-sm">YouTube</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Streaming Grid -->
+            <section class="space-y-4" aria-labelledby="streaming-label">
+                <h2 id="streaming-label" class="text-lg font-bold text-primary text-center">Streaming Platforms</h2>
+                <div class="streaming-grid grid grid-cols-2 gap-4">
+                    <a href="#" data-utm="true" class="js-outbound bg-green-600 hover:bg-green-700 text-white p-4 rounded-lg transition-colors text-center focus-visible" aria-label="Visit Spotify Artist Page">
+                        <div class="text-2xl mb-2">🎵</div>
+                        <div class="text-sm font-bold">Spotify</div>
+                    </a>
+                    <a href="#" data-utm="true" class="js-outbound bg-gray-800 hover:bg-gray-700 text-white p-4 rounded-lg transition-colors text-center focus-visible" aria-label="Visit Apple Music Artist Page">
+                        <div class="text-2xl mb-2">🍎</div>
+                        <div class="text-sm font-bold">Apple Music</div>
+                    </a>
+                    <a href="#" data-utm="true" class="js-outbound bg-red-600 hover:bg-red-700 text-white p-4 rounded-lg transition-colors text-center focus-visible" aria-label="Visit YouTube Channel">
+                        <div class="text-2xl mb-2">📺</div>
+                        <div class="text-sm font-bold">YouTube</div>
+                    </a>
+                    <a href="#" data-utm="true" class="js-outbound bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg transition-colors text-center focus-visible" aria-label="Visit Bandcamp Page">
+                        <div class="text-2xl mb-2">🎼</div>
+                        <div class="text-sm font-bold">Bandcamp</div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Radio CTA -->
+            <section id="radio-section" class="space-y-4 hidden" aria-labelledby="radio-label">
+                <h2 id="radio-label" class="text-lg font-bold text-primary text-center">24/7 Radio</h2>
+                <div class="bg-gray-900 rounded-lg p-6 neon-border border border-primary/30">
+                    <div class="text-center">
+                        <div id="radio-status" class="inline-flex items-center space-x-2 mb-4">
+                            <!-- Status content will be populated by JS -->
+                        </div>
+                        <a id="radio-link" href="#" data-utm="true" class="js-outbound bg-primary hover:bg-primary/80 text-bg px-6 py-3 rounded-lg font-bold transition-colors focus-visible">
+                            Open Radio
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Social Row -->
+            <section class="space-y-4" aria-labelledby="social-label">
+                <h2 id="social-label" class="text-lg font-bold text-primary text-center">Connect</h2>
+                <div class="social-row flex justify-center space-x-6">
+                    <a href="#" data-utm="true" class="js-outbound text-accent hover:text-accent/80 transition-colors focus-visible" aria-label="Follow on Instagram">
+                        <span class="text-2xl">📷</span>
+                    </a>
+                    <a href="#" data-utm="true" class="js-outbound text-accent hover:text-accent/80 transition-colors focus-visible" aria-label="Follow on X (Twitter)">
+                        <span class="text-2xl">🐦</span>
+                    </a>
+                    <a href="#" data-utm="true" class="js-outbound text-accent hover:text-accent/80 transition-colors focus-visible" aria-label="Send Email">
+                        <span class="text-2xl">✉️</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="text-center text-gray-400 text-sm border-t border-primary/20 pt-8" role="contentinfo">
+                <p class="italic">"Every man and woman is a star."</p>
+                <p class="mt-2 text-xs">© 2024 BARBELITH ✦ K-VOID</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Analytics and Scripts -->
+    <script>
+        // Configuration and content loading
+        let config = null;
+
+        async function loadConfig() {
+            try {
+                const response = await fetch('./config.json');
+                if (!response.ok) throw new Error('Failed to load config');
+                config = await response.json();
+                return config;
+            } catch (error) {
+                console.error('Error loading config:', error);
+                // Fallback config
+                return {
+                    brand: { title: "BARBELITH ✦ K-VOID", subtitle: "Transmissions // Neo-Semiotic Soul", glyph: "⊗" },
+                    featured: { label: "Featured Signal", title: "She's in Stars", links: {} },
+                    artist: {},
+                    radio: { enabled: false },
+                    social: {},
+                    analytics: { cloudflare_token: "", tiktok_pixel_id: "" },
+                    theme: { primary: "#1ae0ff", accent: "#ff3fd1", bg: "#0b0b12" }
+                };
+            }
+        }
+
+        function updateContent() {
+            if (!config) return;
+
+            // Update brand info
+            const glyphEl = document.getElementById('brand-glyph');
+            if (glyphEl && config.brand && config.brand.glyph) {
+                glyphEl.textContent = config.brand.glyph;
+            }
+            document.getElementById('brand-title').textContent = (config.brand && config.brand.title) || '';
+            document.getElementById('brand-subtitle').textContent = (config.brand && config.brand.subtitle) || '';
+
+            // Update featured track
+            const featuredLabelEl = document.getElementById('featured-label');
+            if (featuredLabelEl && config.featured && config.featured.label) {
+                featuredLabelEl.textContent = config.featured.label;
+            }
+            document.getElementById('featured-title').textContent = (config.featured && config.featured.title) || '';
+            const featuredLinks = document.querySelectorAll('.featured-links a');
+            if (config.featured && config.featured.links && featuredLinks.length >= 3) {
+                if (featuredLinks[0]) featuredLinks[0].href = config.featured.links.spotify || '#';
+                if (featuredLinks[1]) featuredLinks[1].href = config.featured.links.apple || '#';
+                if (featuredLinks[2]) featuredLinks[2].href = config.featured.links.youtube || '#';
+            }
+
+            // Update streaming links
+            const streamingLinks = document.querySelectorAll('.streaming-grid a');
+            if (config.artist && streamingLinks.length >= 4) {
+                if (streamingLinks[0]) streamingLinks[0].href = config.artist.spotify || '#';
+                if (streamingLinks[1]) streamingLinks[1].href = config.artist.apple || '#';
+                if (streamingLinks[2]) streamingLinks[2].href = config.artist.youtube || '#';
+                if (streamingLinks[3]) streamingLinks[3].href = config.artist.bandcamp || '#';
+            }
+
+            // Update social links
+            const socialLinks = document.querySelectorAll('.social-row a');
+            if (config.social && socialLinks.length >= 3) {
+                if (socialLinks[0]) socialLinks[0].href = config.social.instagram || '#';
+                if (socialLinks[1]) socialLinks[1].href = config.social.x || '#';
+                if (socialLinks[2]) socialLinks[2].href = config.social.email || '#';
+            }
+
+            // Update radio section
+            if (config.radio && config.radio.enabled) {
+                const radioSection = document.getElementById('radio-section');
+                const radioLink = document.getElementById('radio-link');
+                const radioStatus = document.getElementById('radio-status');
+
+                radioSection.classList.remove('hidden');
+                radioLink.href = config.radio.url || '#';
+
+                if (config.radio.status === 'live') {
+                    radioStatus.innerHTML = '<div class="w-2 h-2 bg-green-500 rounded-full radio-live"></div><span class="text-green-500 font-bold">LIVE NOW</span>';
+                    radioStatus.setAttribute('aria-live', 'polite');
+                } else if (config.radio.status === 'coming_soon') {
+                    radioStatus.innerHTML = '<span class="text-accent">📡 coming online soon</span>';
+                }
+            }
+        }
+
+        // Update meta tags from config + host
+        function updateMetaFromConfig() {
+            if (!config || !config.brand) return;
+            const ogTitle = document.querySelector('meta[property="og:title"]');
+            const ogDesc = document.querySelector('meta[property="og:description"]');
+            const twTitle = document.querySelector('meta[name="twitter:title"]');
+            const twDesc = document.querySelector('meta[name="twitter:description"]');
+            const ogImage = document.querySelector('meta[name="twitter:image"]');
+            const ogImage2 = document.querySelector('meta[property="og:image"]');
+            const ogUrl = document.querySelector('meta[property="og:url"]');
+            const canonical = document.getElementById('canonical-link');
+
+            const host = window.location.host;
+            const isTuneSubdomain = host.startsWith('tune.');
+            const canonicalUrl = `https://${isTuneSubdomain ? 'tune.kvoid.net' : 'kvoid.net'}/`;
+
+            if (ogTitle) ogTitle.setAttribute('content', `${config.brand.title} — Tuning Console`);
+            if (twTitle) twTitle.setAttribute('content', `${config.brand.title} — Tuning Console`);
+            if (ogDesc && config.brand.subtitle) ogDesc.setAttribute('content', config.brand.subtitle);
+            if (twDesc && config.brand.subtitle) twDesc.setAttribute('content', config.brand.subtitle);
+            if (ogImage) ogImage.setAttribute('content', `${canonicalUrl}og.jpg`);
+            if (ogImage2) ogImage2.setAttribute('content', `${canonicalUrl}og.jpg`);
+            if (ogUrl) ogUrl.setAttribute('content', canonicalUrl);
+            if (canonical) canonical.setAttribute('href', canonicalUrl);
+        }
+
+        // UTM Parameter Injection
+        function addUTMParams(href) {
+            try {
+                const url = new URL(href);
+                if (!url.searchParams.has('utm_source')) {
+                    url.searchParams.set('utm_source', 'tiktok');
+                    url.searchParams.set('utm_medium', 'bio');
+                    url.searchParams.set('utm_campaign', 'launch');
+                }
+                return url.toString();
+            } catch (e) {
+                return href;
+            }
+        }
+
+        function injectUTMParams() {
+            const links = document.querySelectorAll('a[data-utm="true"]');
+            links.forEach(link => {
+                link.href = addUTMParams(link.href);
+            });
+        }
+
+        // Analytics Integration
+        function initAnalytics() {
+            // Cloudflare Web Analytics
+            if (config.analytics.cloudflare_token && config.analytics.cloudflare_token !== 'CF_TOKEN_OR_EMPTY') {
+                const script = document.createElement('script');
+                script.defer = true;
+                script.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+                script.setAttribute('data-cf-beacon', `{"token": "${config.analytics.cloudflare_token}"}`);
+                document.body.appendChild(script);
+            }
+
+            // TikTok Pixel only on tune.kvoid.net
+            const isTuneHost = /(^|\.)tune\.kvoid\.net$/i.test(window.location.host);
+            if (isTuneHost && config.analytics.tiktok_pixel_id && config.analytics.tiktok_pixel_id.trim()) {
+                // Load TikTok Pixel
+                !function (w, d, t) {
+                    w.TiktokAnalyticsObject=t;
+                    var ttq=w.ttq=w.ttq||[];
+                    ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];
+                    ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};
+                    for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);
+                    ttq.instance=function(t){for(var e=ttq._i=ttq._i||[],n=0;n<e.length;n++)if(e[n]&&e[n][0]==t)return e[n];return e[n]=[t],e.push(e[n]),e[n]};
+                    ttq.load=function(e,n){var i="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||[],ttq._i.push([e,n]),ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=document.createElement("script");o.type="text/javascript",o.async=!0,o.src=i+"?sdkid="+e+"&lib="+t;o.onload=function(){ttq._t[e]=+new Date},(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(o)};
+                    ttq.load(config.analytics.tiktok_pixel_id);
+                    ttq.page();
+                    ttq.track('ViewContent');
+                }(window, document, 'ttq');
+
+                // Track outbound link clicks
+                document.addEventListener('click', function(e) {
+                    if (e.target.closest('.js-outbound')) {
+                        ttq.track('ClickButton');
+                    }
+                });
+            }
+        }
+
+        // Initialize the page
+        async function init() {
+            config = await loadConfig();
+            updateContent();
+            updateMetaFromConfig();
+            injectUTMParams();
+            initAnalytics();
+
+            // Show main content and hide loading
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('main-content').classList.remove('hidden');
+        }
+
+        // Start when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
+    </script>
+</body>
+</html>

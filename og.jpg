@@ -1,0 +1,24 @@
+OG.IMAGE PLACEHOLDER
+
+This file should be replaced with an actual og.jpg image file.
+
+Specifications:
+- Size: 1200×630 pixels (1.91:1 aspect ratio for optimal social media sharing)
+- Format: JPEG (preferred) or PNG
+- File size: Under 5MB for fast loading
+- Design requirements:
+  * Background: Dark gradient (#0b0b12 to #1a1a2e)
+  * Primary text: "BARBELITH ✦ K-VOID" in white, JetBrains Mono font
+  * Secondary text: "Transmissions // Neo-Semiotic Soul" in #1ae0ff
+  * Tertiary text: "Tuning Console" in light gray
+  * Main glyph: ⊗ symbol in gradient (#1ae0ff to #ff3fd1)
+  * Scanline effect: Subtle horizontal lines in #1ae0ff with low opacity
+  * Style: Cyberpunk/neon aesthetic with glowing effects
+
+You can create this using:
+- Canva (search for "social media banner" templates)
+- Figma or Adobe XD with the provided color scheme
+- AI image generators like Midjourney or DALL-E with the prompt:
+  "Cyberpunk neon social media banner for BARBELITH K-VOID music artist, dark background with ⊗ symbol, scanlines effect, gradient colors #1ae0ff and #ff3fd1, text 'BARBELITH ✦ K-VOID' and 'Transmissions // Neo-Semiotic Soul'"
+
+The current og.jpg is an SVG placeholder for development purposes.

@@ -1,0 +1,41 @@
+{
+  "brand": {
+    "title": "BARBELITH ✦ K-VOID",
+    "subtitle": "Transmissions // Neo-Semiotic Soul",
+    "glyph": "⊗"
+  },
+  "featured": {
+    "label": "Featured Signal",
+    "title": "She's in Stars",
+    "links": {
+      "spotify": "https://open.spotify.com/track/XXXXX",
+      "apple": "https://music.apple.com/track/XXXXX",
+      "youtube": "https://youtu.be/XXXXX"
+    }
+  },
+  "artist": {
+    "spotify": "https://open.spotify.com/artist/XXXXX",
+    "apple": "https://music.apple.com/artist/XXXXX",
+    "youtube": "https://youtube.com/@yourchannel",
+    "bandcamp": "https://yourname.bandcamp.com"
+  },
+  "radio": {
+    "enabled": true,
+    "status": "coming_soon",
+    "url": "https://radio.kvoid.net"
+  },
+  "social": {
+    "instagram": "https://instagram.com/yourhandle",
+    "x": "https://x.com/yourhandle",
+    "email": "mailto:booking@novamindcreations.com"
+  },
+  "analytics": {
+    "cloudflare_token": "CF_TOKEN_OR_EMPTY",
+    "tiktok_pixel_id": ""
+  },
+  "theme": {
+    "primary": "#1ae0ff",
+    "accent": "#ff3fd1",
+    "bg": "#0b0b12"
+  }
+}
