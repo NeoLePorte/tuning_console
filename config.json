@@ -8,16 +8,16 @@
     "label": "Featured Signal",
     "title": "Terpsichore",
     "links": {
-      "spotify": "https://open.spotify.com/track/XXXXX",
-      "apple": "https://music.apple.com/track/XXXXX",
-      "youtube": "https://www.youtube.com/@DreamerNemo"
+      "spotify": "https://open.spotify.com/album/07bCoPk11E6D46Zjklg4nr",
+      "apple": "https://music.apple.com/us/artist/barbelith/1835086011",
+      "youtube": "https://www.youtube.com/watch?v=GnzwK74Rcm4&list=OLAK5uy_mbLIH4mDWbbttW5M-zzF2Y5SoIn8oeYqQ&index=15"
     }
   },
   "artist": {
     "spotify": "https://open.spotify.com/artist/72rabGMClM1K2v4H9pIDmt",
     "apple": "https://music.apple.com/us/artist/barbelith/1835086011",
     "youtube": "https://www.youtube.com/@DreamerNemo",
-    "bandcamp": "https://yourname.bandcamp.com"
+    "bandcamp": "https://brbelith.bandcamp.com/"
   },
   "radio": {
     "enabled": true,
