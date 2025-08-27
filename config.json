@@ -6,26 +6,26 @@
   },
   "featured": {
     "label": "Featured Signal",
-    "title": "She's in Stars",
+    "title": "Terpsichore",
     "links": {
       "spotify": "https://open.spotify.com/track/XXXXX",
       "apple": "https://music.apple.com/track/XXXXX",
-      "youtube": "https://youtu.be/XXXXX"
+      "youtube": "https://www.youtube.com/@DreamerNemo"
     }
   },
   "artist": {
     "spotify": "https://open.spotify.com/artist/XXXXX",
     "apple": "https://music.apple.com/artist/XXXXX",
-    "youtube": "https://youtube.com/@yourchannel",
+    "youtube": "https://www.youtube.com/@DreamerNemo",
     "bandcamp": "https://yourname.bandcamp.com"
   },
   "radio": {
     "enabled": true,
-    "status": "coming_soon",
+    "status": "coming_soon!",
     "url": "https://radio.kvoid.net"
   },
   "social": {
-    "instagram": "https://instagram.com/yourhandle",
+    "instagram": "https://www.instagram.com/barbel1th/",
     "x": "https://x.com/yourhandle",
     "email": "mailto:booking@novamindcreations.com"
   },

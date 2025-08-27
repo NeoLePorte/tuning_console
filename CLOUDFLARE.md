@@ -68,3 +68,4 @@ Suggested DNS records:
 - robots.txt allows all, sitemap at `https://kvoid.net/sitemap.xml`
 - Verify `kvoid.net` with Google/Bing via DNS
 
+
