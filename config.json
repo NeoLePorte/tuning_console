@@ -1,12 +1,13 @@
 {
   "brand": {
-    "title": "BARBELITH ✦ K-VOID",
+    "title": "K-VOID Link Tuner",
     "subtitle": "Transmissions // Neo-Semiotic Soul",
     "glyph": "⊗"
   },
   "featured": {
     "label": "Featured Signal",
     "title": "Terpsichore",
+    "cover": "assets/TerpsichoreAlbumCover.jpg",
     "links": {
       "spotify": "https://open.spotify.com/album/07bCoPk11E6D46Zjklg4nr",
       "apple": "https://music.apple.com/us/artist/barbelith/1835086011",
@@ -26,8 +27,9 @@
   },
   "social": {
     "instagram": "https://www.instagram.com/barbel1th/",
-    "x": "https://x.com/yourhandle",
-    "email": "mailto:booking@novamindcreations.com"
+    "x": "",
+    "facebook": "https://www.facebook.com/profile.php?id=61578874361730",
+    "email": "mailto:barbelith@kvoid.net"
   },
   "analytics": {
     "cloudflare_token": "CF_TOKEN_OR_EMPTY",

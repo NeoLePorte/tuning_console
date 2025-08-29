@@ -1,6 +1,10 @@
 # SSH Keys
 deploy_key
 deploy_key.pub
+deploy_key_v2
+deploy_key_v2.pub
 
 # Editor backup files
 *~
+
+
