@@ -354,6 +354,28 @@
         </div>
     </div>
 
+    <!-- Easter Egg Modal (password -> video) -->
+    <div id="egg-overlay" class="fixed inset-0 hidden z-50">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+        <div class="relative max-w-md mx-auto mt-24">
+            <div id="egg-password" class="crt-frame neon-border border border-primary/30 rounded-lg p-6 bg-black/40">
+                <h3 class="text-primary font-bold mb-4 text-center">Access Console</h3>
+                <label for="egg-pass-input" class="sr-only">Password</label>
+                <input id="egg-pass-input" type="password" class="w-full bg-gray-900 text-white rounded px-3 py-2 border border-white/10 focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Enter access code" />
+                <div class="flex justify-between mt-4">
+                    <button id="egg-cancel" class="px-4 py-2 rounded bg-gray-800 hover:bg-gray-700">Cancel</button>
+                    <button id="egg-submit" class="px-4 py-2 rounded bg-primary text-bg hover:bg-primary/80">Unlock</button>
+                </div>
+            </div>
+            <div id="egg-video-wrap" class="hidden rounded-lg overflow-hidden shadow-xl">
+                <div class="relative">
+                    <video id="egg-video" class="w-full h-auto" playsinline controls></video>
+                    <button id="egg-close" class="absolute top-2 right-2 bg-black/70 hover:bg-black/90 text-white rounded px-3 py-1">✕</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Analytics and Scripts -->
     <script>
         // Configuration and content loading
@@ -562,6 +584,9 @@
             // Start ASCII monitor animations
             startAsciiMonitors();
 
+            // Init radio easter egg modal
+            initRadioEasterEgg();
+
             // Show main content and hide loading
             document.getElementById('loading').classList.add('hidden');
             document.getElementById('main-content').classList.remove('hidden');
@@ -606,6 +631,59 @@
                     render();
                     timer = setInterval(render, intervalMs);
                 }
+            });
+        }
+
+        // Radio Easter Egg: password prompt → autoplay webm modal
+        function initRadioEasterEgg() {
+            const link = document.getElementById('radio-link');
+            if (!link) return;
+            const overlay = document.getElementById('egg-overlay');
+            const passPanel = document.getElementById('egg-password');
+            const videoPanel = document.getElementById('egg-video-wrap');
+            const input = document.getElementById('egg-pass-input');
+            const submit = document.getElementById('egg-submit');
+            const cancel = document.getElementById('egg-cancel');
+            const closeBtn = document.getElementById('egg-close');
+            const video = document.getElementById('egg-video');
+
+            function showOverlay() {
+                overlay.classList.remove('hidden');
+                passPanel.classList.remove('hidden');
+                videoPanel.classList.add('hidden');
+                setTimeout(() => input.focus(), 0);
+            }
+            function hideOverlay() {
+                overlay.classList.add('hidden');
+                video.pause();
+                video.currentTime = 0;
+                video.removeAttribute('src');
+            }
+            function playEgg() {
+                passPanel.classList.add('hidden');
+                videoPanel.classList.remove('hidden');
+                const src = (config && config.radio && config.radio.egg_video) || 'assets/0000-0642.webm';
+                video.setAttribute('src', src);
+                video.setAttribute('autoplay', 'autoplay');
+                video.play().catch(() => {});
+            }
+
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showOverlay();
+            });
+            submit.addEventListener('click', playEgg);
+            cancel.addEventListener('click', hideOverlay);
+            closeBtn.addEventListener('click', hideOverlay);
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') playEgg();
+                if (e.key === 'Escape') hideOverlay();
+            });
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) hideOverlay();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !overlay.classList.contains('hidden')) hideOverlay();
             });
         }
     </script>
