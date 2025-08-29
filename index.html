@@ -168,14 +168,77 @@
             opacity: .7;
             pointer-events: none;
         }
+
+        /* ASCII Monitors */
+        .ascii-monitor svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .ascii-screen {
+            font-family: 'JetBrains Mono', monospace;
+            white-space: pre;
+        }
+
+        /* Side fixed monitors */
+        .ascii-side {
+            position: fixed;
+            top: 80px;
+            width: 320px;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+        .ascii-left { left: 24px; }
+        .ascii-right { right: 24px; }
+        @media (max-width: 1279px) {
+            .ascii-side { display: none; }
+        }
     </style>
 </head>
 <body class="bg-bg text-white font-mono min-h-screen">
     <!-- Ambient Background Layers -->
     <div class="vapor-art"></div>
     <div class="vapor-bg"></div>
+
+    <!-- Fixed ASCII Monitors flanking the main column -->
+    <div class="hidden lg:block">
+        <div class="ascii-side ascii-left">
+            <svg viewBox="0 0 320 220" role="img" aria-hidden="true">
+                <defs>
+                    <linearGradient id="crtGlow1_fixed" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#1ae0ff" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#ff3fd1" stop-opacity="0.15"/>
+                    </linearGradient>
+                </defs>
+                <rect x="6" y="6" width="308" height="208" rx="10" fill="#0c0c14" stroke="url(#crtGlow1_fixed)" stroke-width="2"/>
+                <rect x="20" y="24" width="280" height="160" rx="4" fill="#0f1220" stroke="#1ae0ff55"/>
+                <foreignObject x="22" y="26" width="276" height="156">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="ascii-screen text-primary text-[10px] leading-[10px]">
+                        <pre id="ascii-kvoid"></pre>
+                    </div>
+                </foreignObject>
+            </svg>
+        </div>
+        <div class="ascii-side ascii-right">
+            <svg viewBox="0 0 320 220" role="img" aria-hidden="true">
+                <defs>
+                    <linearGradient id="crtGlow2_fixed" x1="0" x2="0" y1="0" y2="1">
+                        <stop offset="0%" stop-color="#ff3fd1" stop-opacity="0.25"/>
+                        <stop offset="100%" stop-color="#1ae0ff" stop-opacity="0.15"/>
+                    </linearGradient>
+                </defs>
+                <rect x="6" y="6" width="308" height="208" rx="10" fill="#0c0c14" stroke="url(#crtGlow2_fixed)" stroke-width="2"/>
+                <rect x="20" y="24" width="280" height="160" rx="4" fill="#0f1220" stroke="#ff3fd155"/>
+                <foreignObject x="22" y="26" width="276" height="156">
+                    <div xmlns="http://www.w3.org/1999/xhtml" class="ascii-screen text-accent text-[10px] leading-[10px]">
+                        <pre id="ascii-barbelith"></pre>
+                    </div>
+                </foreignObject>
+            </svg>
+        </div>
+    </div>
     <!-- Main Container -->
-    <div id="app" class="max-w-md mx-auto px-4 py-8 space-y-8 relative noise-overlay">
+    <div id="app" class="max-w-md mx-auto px-4 py-8 space-y-8 relative noise-overlay z-10">
         <!-- Loading State -->
         <div id="loading" class="text-center py-12">
             <div class="text-primary text-xl">⊗</div>
@@ -224,6 +287,7 @@
                 </div>
             </section>
 
+            
             <!-- Streaming Grid -->
             <section class="space-y-4" aria-labelledby="streaming-label">
                 <h2 id="streaming-label" class="text-lg font-bold text-primary text-center">Streaming Platforms</h2>
@@ -495,6 +559,9 @@
             injectUTMParams();
             initAnalytics();
 
+            // Start ASCII monitor animations
+            startAsciiMonitors();
+
             // Show main content and hide loading
             document.getElementById('loading').classList.add('hidden');
             document.getElementById('main-content').classList.remove('hidden');
@@ -505,6 +572,41 @@
             document.addEventListener('DOMContentLoaded', init);
         } else {
             init();
+        }
+
+        // ASCII Monitor Animation
+        function startAsciiMonitors() {
+            const kvoidEl = document.getElementById('ascii-kvoid');
+            const barbEl = document.getElementById('ascii-barbelith');
+            if (!kvoidEl || !barbEl) return;
+
+            const kvoidFrames = [
+`  _  __     __   ___  ___  _   _\n | |/ /\\ /\\ \ / / |/ _ \\/ _\\| | | |\n | ' <  V  \\ V /| |  (_) | (_) | |_| |\n |_|\\_\\_/\\_/\\_/ |_|\\___/ \\___/ \\__,_|\n\n  K - V O I D   R A D I O\n  24/7  SIGNAL  STREAM`,
+`  _  __     __   ___  ___  _   _\n | |/ /\\ /\\ \ / / |/ _ \\/ _\\| | | |\n | ' <  V  \\ V /| |  (_) | (_) | |_| |\n |_|\\_\\_/\\_/\\_/ |_|\\___/ \\___/ \\__,_|\n\n  K - V O I D   R A D I O\n  ♫ live mixes • idm • bass`,
+`  _  __     __   ___  ___  _   _\n | |/ /\\ /\\ \ / / |/ _ \\/ _\\| | | |\n | ' <  V  \\ V /| |  (_) | (_) | |_| |\n |_|\\_\\_/\\_/\\_/ |_|\\___/ \\___/ \\__,_|\n\n  TUNE: radio.kvoid.net\n  >> connecting ...`];
+
+            const barbFrames = [
+`   ____   __    ___  ____  _____ _     _  _  _   _\n  | __ ) / _|  / _ \\| __ )| ____| |   | || || | | |\n  |  _ \\| |_  | | | |  _ \\|  _| | |   | || || |_| |\n  | |_) |  _| | |_| | |_) | |___| |___| ||_  _  _ |\n  |____/|_|    \\___/|____/|_____|_____\\__/ |_| |_|\n\n  BARBELITH  //  TRANSMISSIONS`,
+`  NEW SINGLE\n  TERPSICHORE  OUT NOW\n  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓`,
+`  FOLLOW\n  insta: @barbel1th\n  youtube: @DreamerNemo`];
+
+            const intervalMs = 1200;
+            let i1 = 0, i2 = 0;
+            function render() {
+                kvoidEl.textContent = kvoidFrames[i1 % kvoidFrames.length];
+                barbEl.textContent = barbFrames[i2 % barbFrames.length];
+                i1++; i2++;
+            }
+            render();
+            let timer = setInterval(render, intervalMs);
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    clearInterval(timer);
+                } else {
+                    render();
+                    timer = setInterval(render, intervalMs);
+                }
+            });
         }
     </script>
 </body>
